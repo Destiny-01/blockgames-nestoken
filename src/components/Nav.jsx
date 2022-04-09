@@ -1,12 +1,7 @@
-import React, { useState } from "react";
-import { HandleConnect } from "../utils/contract";
+import React from "react";
 
-const Nav = () => {
-  const [account, setAccount] = useState("");
-  HandleConnect().then((token) => {
-    setAccount(token);
-    window.location.reload()
-  });
+const Nav = ({account, connect}) => {
+  console.log(account)
 
   return (
     <nav className="flex justify-between items-center  mb-6 px-4 bg-yellow-300">
@@ -17,7 +12,7 @@ const Nav = () => {
       {account ? (
         <button disabled className="button">{account}</button>
       ) : (
-        <button className="button" onClick={HandleConnect}>
+        <button className="button" onClick={connect}>
           Connect Wallet
         </button>
       )}

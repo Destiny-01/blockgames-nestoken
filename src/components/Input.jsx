@@ -4,7 +4,7 @@ import * as XLSX from "xlsx";
 import { distributeToken, getRewarded, balanceOf } from "../utils/contract";
 import Error from "./Error";
 
-function Input() {
+function Input({account}) {
   const [excelFile, setExcelFile] = useState(null);
   const [bal, setBal] = useState("");
   const [error, setError] = useState({ err: "", excelErr: "", input: "" });
@@ -151,7 +151,7 @@ function Input() {
             </tr>
           </thead>
           <tbody>
-            {rewarded && rewarded.map((x, i) => (
+            {(account && rewarded) && rewarded.map((x, i) => (
               <tr
                 key={i}
                 className="bg-white border-b hover:cursor-pointer hover:bg-gray-200 "
